@@ -1,0 +1,52 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+<header class="container">
+  <h1>Daftar Barang</h1>
+</header>
+<main>
+  <table class="table table-hover mb-0 text-center data">
+    <thead>
+      <tr>
+        <th>ID Barang</th>
+        <th>Nama Barang</th>
+        <th>Jumlah Barang</th>
+        <th>ID Tipe Barang</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {%for barang in barang_list%}
+      <tr>
+        <td>{{ barang.id_barang }}</td>
+        <td>{{ barang.nama_barang }}</td>
+        <td>{{ barang.jumlah }}</td>
+        <td>{{ barang.tipe_id }}</td>
+
+        <td>
+          <a
+            href="{{ url_for('get_barang', id=barang.id) }}"
+            class="btn btn-warning me-1"
+            ><i class="fa fa-edit">Update</i></a
+          >
+          <form
+            id="delete-form-{{ barang.id }}"
+            action="{{ url_for('delete_barang', id=barang.id) }}"
+            method="DELETE"
+            style="display: inline-block"
+          >
+            <input type="hidden" name="_method" value="DELETE" />
+            <button type="submit" class="btn btn-danger">
+              <i class="fa fa-trash">Delete</i>
+            </button>
+          </form>
+        </td>
+      </tr>
+      {%endfor%}
+    </tbody>
+  </table>
+</main>
+<a href="/barang/create" class="btn btn-primary md-5 ml-5"
+  >Create New Item</a
+>
+</body>{% endblock %}

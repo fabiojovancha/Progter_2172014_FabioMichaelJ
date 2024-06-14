@@ -1,0 +1,44 @@
+{% extends "base/base.html" %} {% block content %}
+<header class="container mt-4">
+  <h1>Update Tipe Barang</h1>
+</header>
+<main class="container mt-4">
+  <form
+    id="add-barang-form"
+    method="post"
+    action="{{url_for('update_tipebarang', id=tipe.id) }}"
+  >
+    <h2>Form Update Tipe Barang</h2>
+    <div class="form-group">
+      <label for="id">ID Barang:</label>
+      <div class="form-group">
+        <label for="id">ID Barang:</label>
+        <input
+          type="text"
+          id="id"
+          name="id"
+          class="form-control"
+          required
+          value="{{tipe.id}}"
+          readonly
+        />
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="nama_tipe">Nama Tipe Barang:</label>
+      <input
+        type="text"
+        id="nama_tipe"
+        name="nama_tipe"
+        class="form-control"
+        required
+        value="{{tipe.nama_tipe}}"
+      />
+    </div>
+    <div class="button mt-5 d-flex justify-content-end">
+      <a href="/tipebarang" class="btn btn-danger me-2">Cancel</a>
+      <input type="submit" class="btn btn-primary ml-2" value="Add" />
+    </div>
+  </form>
+</main>
+{% endblock %}

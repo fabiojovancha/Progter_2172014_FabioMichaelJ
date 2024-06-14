@@ -1,0 +1,47 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+  <header class="container">
+    <h1>Daftar Tipe Barang</h1>
+  </header>
+  <main>
+    <table class="table table-hover mb-0 text-center data">
+      <thead>
+        <tr>
+          <th>ID Tipe</th>
+          <th>Tipe Barang</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {%for tipe in tipe_list%}
+        <tr>
+          <td>{{ tipe.id }}</td>
+          <td>{{ tipe.nama_tipe }}</td>
+
+          <td>
+            <a
+              href="{{ url_for('get_tipe', id=tipe.id) }}"
+              class="btn btn-warning me-1"
+              ><i class="fa fa-edit">Update</i></a
+            >
+            <form
+              id="delete-form-{{ tipe.id }}"
+              action="{{ url_for('delete_tipebarang', id=tipe.id) }}"
+              method="DELETE"
+              style="display: inline-block"
+            >
+              <input type="hidden" name="_method" value="DELETE" />
+              <button type="submit" class="btn btn-danger">
+                <i class="fa fa-trash">Delete</i>
+              </button>
+            </form>
+          </td>
+        </tr>
+        {%endfor%}
+      </tbody>
+    </table>
+  </main>
+  <a href="/tipe/create" class="btn btn-primary md-5 ml-5">Create New Item</a>
+{% endblock %}
+

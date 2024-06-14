@@ -1,0 +1,66 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+  <header class="container mt-4">
+    <h1>Update Barang</h1>
+  </header>
+  <main class="container mt-4">
+    <form
+      id="add-barang-form"
+      method="post"
+      action="{{url_for('update_barang', id=barang.id) }}"
+    >
+      <h2>Form Update Barang</h2>
+      <div class="form-group">
+        <label for="id_barang">ID Barang:</label>
+        <input
+          type="text"
+          id="id_barang"
+          name="id_barang"
+          class="form-control"
+          required
+          value="{{barang.id_barang}}"
+          readonly
+        />
+      </div>
+      <div class="form-group">
+        <label for="nama_barang">Nama Barang:</label>
+        <input
+          type="text"
+          id="nama_barang"
+          name="nama_barang"
+          class="form-control"
+          required
+          value="{{barang.nama_barang}}"
+        />
+      </div>
+      <div class="form-group">
+        <label for="jumlah">Jumlah:</label>
+        <input
+          type="number"
+          id="jumlah"
+          name="jumlah"
+          class="form-control"
+          required
+          value="{{barang.jumlah}}"
+        />
+      </div>
+      <div class="form-group">
+        <label for="tipe_id">ID Tipe Barang:</label>
+        <input
+          type="number"
+          id="tipe_id"
+          name="tipe_id"
+          class="form-control"
+          required
+          value="{{barang.tipe_id}}"
+        />
+      </div>
+      <div class="button mt-5 d-flex justify-content-end">
+        <a href="/barang" class="btn btn-danger me-2" >Cancel</a>
+        <input type="submit" class="btn btn-primary ml-2" value="Add" />
+      </div>
+    </form>
+  </main>
+{% endblock %}
+
